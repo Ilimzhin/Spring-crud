@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+    <form th:action="@{/products}">
+        Filter: <input type="text" name="tittle" id="tittle" size="50" th:value="${tittle}" required/>
+        &nbsp;
+        <input type="submit" value="Поиск2"/>
+        &nbsp;
+        <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+    </form>
+    <script type="text/javascript">
+        function clearSearch() {
+            window.location = "[[@{/products}]]";
+        }
+    </script>
+</div>
+
+<div th:switch="${products}" align="center">
+    <h2 th:case="null">No products found! Нету(</h2>
+    <div th:case="*">
+        <h2>Products</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>цена</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.tittle}"></td>
+                <td th:text="${product.price}"></td>
+                <td><a th:href="@{product-info/{id}(id=${product.id})}">Подробнее</a></td>
+                <td><a th:href="@{product-update/{id}(id=${product.id})}">Редактировать</a></td>
+                <td><a th:href="@{product-delete/{id}(id=${product.id})}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/product-create">Создать Товар</a></p>
+</div>
+<form action="/logout" method="post">
+    <div><input type="hidden" name="_csrf" value="${_csrf.token}"/></div>
+    <div><input type="submit" value="Выйти"/></div>
+</form>
+</body>
+</html>

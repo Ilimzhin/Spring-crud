@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BUY SELL</title>
+</head>
+<body>
+<h1>BUY SELL</h1><hr>
+
+<form action=@{"/logout"} method="post">
+    <div><input type="hidden" name="_csrf" value="${_csrf.token}"/></div>
+    <div><input type="submit" value="Выйти"/></div>
+</form>
+
+<h4>Товары со всего Кыргызстана</h4>
+    <div>
+        <p><a href="/products">Подробнее...</a></p>
+    </div>
+<hr>
+<h3>Создать новый товар</h3>
+<form action="/product/create" method="post">
+    Название товара: <input type="text" name="title"/><br><br>
+    Описание товара: <input type="text" name="description"/><br><br>
+    Цена: <input type="number" name="price"/><br><br>
+    Город: <input type="text" name="city"/><br><br>
+    Имя: <input type="text" name="author"/><br><br>
+    <input type="submit" value="Добавить товар"/>
+</form>
+</body>
+</html>

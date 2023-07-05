@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<h2>Товары</h2>
+<table>
+    <tr>
+        <th>Название товара:</th>
+        <td th:text="${product.tittle}"></td>
+    </tr>
+    <tr>
+        <th>Описание товара:</th>
+        <td th:text="${product.description}"></td>
+    </tr>
+    <tr>
+        <th>Цена:</th>
+        <td th:text="${product.price}"></td>
+    </tr>
+    <tr>
+        <th>Город:</th>
+        <td th:text="${product.city}"></td>
+    </tr>
+    <tr>
+        <th>Автор:</th>
+        <td th:text="${product.author}"></td>
+    </tr>
+</table>
+</body>
+
+<head>
+    <meta http-equiv="refresh" content="7; url='http://localhost:8080/products'" />
+</head>
+<body>
+<p>Чтобы вернуться нажмите на <a href="http://localhost:8080/products">Меня</a>.</p>
+</body>
+</html>

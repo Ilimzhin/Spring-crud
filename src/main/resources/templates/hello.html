@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Hello World!</title>
+</head>
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="Выйти"/>
+</form>
+<form th:action="@{/users}" method="post">
+  <input type="submit" value="Список"/>
+</form>
+<form th:action="@{/home}" method="post">
+  <input type="submit" value="Домашняя страница"/>
+</form>
+<form th:action="@{/user-create}" method="post">
+  <input type="submit" value="Создание Юзеров"/>
+</form>
+</body>
+</html>
